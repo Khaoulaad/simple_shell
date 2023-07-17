@@ -1,6 +1,13 @@
 #include "shell.h"
 
-char *get_location(char *command){
+/**
+ * handle_path - expected to take in the command that was passed
+ * and return the path of that command
+ * @command: the given command
+ * Return: char
+ */
+
+char *handle_path(char *command){
     char *path, *path_copy, *path_token, *file_path;
     int command_length, directory_length;
     struct stat buffer;
