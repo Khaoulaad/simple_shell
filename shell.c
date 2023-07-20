@@ -28,7 +28,7 @@ int main(int ac, char **argv)
         number_of_char = getline(&lineptr, &n, stdin);
         if (number_of_char == -1)
         {
-            break;
+            return (-1);
         }
         lineptr_copy = malloc(sizeof(char) * number_of_char);
         if (lineptr_copy == NULL)
@@ -65,7 +65,6 @@ int main(int ac, char **argv)
         num_tokens = 0;
 
         free(lineptr_copy);
-        free(lineptr);
     }
     return (0);
 }
