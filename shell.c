@@ -16,16 +16,18 @@ int main(int ac, char **argv)
     const char *delim = " \n";
     int num_tokens = 0;
     char *token;
-    int i;
+    int i, isfirst = 1;
     (void)ac;
 
     while (1)
     {
-        printf("%s", prompt);
+	    if (isatty(STDIN_FILENO) || isfirst)
+		    printf("%s", prompt);
+	    isfirst = 0;
+
         number_of_char = getline(&lineptr, &n, stdin);
         if (number_of_char == -1)
         {
-            printf("Exiting shell....\n");
             break;
         }
         lineptr_copy = malloc(sizeof(char) * number_of_char);
