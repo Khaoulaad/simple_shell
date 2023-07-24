@@ -11,3 +11,4 @@ void handle_cmd(char **argv);
 char *handle_path(char *command);
 void print_environment();
 extern char **environ;
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);

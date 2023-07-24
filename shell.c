@@ -22,19 +22,24 @@ int main(int ac, char **argv)
     while (1)
     {
 	    if (isatty(STDIN_FILENO) || isfirst)
+	    {
 		    printf("%s", prompt);
+		    fflush(stdout);
+	    }
 	    isfirst = 0;
 
-        number_of_char = getline(&lineptr, &n, stdin);
+        number_of_char = _getline(&lineptr, &n, stdin);
         if (number_of_char == -1)
         {
-            return (-1);
-        }
+		free(lineptr);
+		break;
+	}
         lineptr_copy = malloc(sizeof(char) * number_of_char);
         if (lineptr_copy == NULL)
         {
-            perror("tsh: memory allocation error");
-            return (-1);
+		perror("tsh: memory allocation error");
+		free(lineptr);
+		return (-1);
         }
         strcpy(lineptr_copy, lineptr);
 	token = strtok(lineptr, delim);
@@ -45,6 +50,7 @@ int main(int ac, char **argv)
         }
         num_tokens++;
         argv = malloc(sizeof(char *) * num_tokens);
+
         token = strtok(lineptr_copy, delim);
         for (i = 0; token != NULL; i++)
         {
