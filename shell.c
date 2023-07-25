@@ -24,10 +24,9 @@ int main(int ac, char **argv)
 		if (isatty(STDIN_FILENO) || isfirst)
 		{
 			printf("%s", prompt);
-			fflush(stdout);
 		}
 		isfirst = 0;
-		number_of_char = _getline(&lineptr, &n, stdin);
+		number_of_char = getline(&lineptr, &n, stdin);
 		if (number_of_char == -1)
 		{
 			free(lineptr);
