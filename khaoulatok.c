@@ -31,7 +31,7 @@ char **tokenize_input(char *lineptr, const char *separator)
         token = strtok(lineptr_copy, " \n\t");
         for (i = 0; token != NULL; i++)
         {
-                cmd_argv[i] = strdup(token);
+                cmd_argv[i] = _strdup(token);
                 token = strtok(NULL, " \n\t");
         }
         cmd_argv[i] = NULL;

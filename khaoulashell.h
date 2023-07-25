@@ -18,5 +18,10 @@ void execute_cmd(char **argv);
 char **tokenize_input(char *lineptr, const char *delim);
 void free_cmd_argv(char **cmd_argv);
 void run_shell(void);
-
+char *_strcat(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+char *_strchr(char *s, char c);
+char *_strdup(char *str);
 #endif

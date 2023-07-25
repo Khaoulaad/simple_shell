@@ -34,9 +34,9 @@ int main(void)
                         free_cmd_argv(cmd_argv);
                         continue;
                 }
-                if (strcmp(cmd_argv[0], "env") == 0)
+                if (_strcmp(cmd_argv[0], "env") == 0)
                         print_environment();
-                else if (strcmp(cmd_argv[0], "exit") == 0)
+                else if (_strcmp(cmd_argv[0], "exit") == 0)
                 {
                         free_cmd_argv(cmd_argv);
                         break;

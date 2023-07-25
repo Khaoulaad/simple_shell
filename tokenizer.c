@@ -60,14 +60,14 @@ char **tokenize_string(char *string, char *delim, int *count)
 
         while (i < length)
         {
-                while (i < length && strchr(delim, string[i]) != NULL)
+                while (i < length && _strchr(delim, string[i]) != NULL)
                 {
                         i++;
                 }
 
                 int j = 0;
 
-                while (i < length && strchr(delim, string[i]) == NULL)
+                while (i < length && _strchr(delim, string[i]) == NULL)
                 {
                         buffer[j++] = string[i++];
                 }
