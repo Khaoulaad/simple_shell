@@ -89,3 +89,4 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
         }
         free(lineptr);
         return (0);
+}

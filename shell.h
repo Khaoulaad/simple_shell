@@ -1,3 +1,6 @@
+#ifndef SHELL_H
+#define SHELL_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -14,6 +17,9 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <stdlib.h>
+
+extern char **environ;
+
 /*functions_helper*/
 int _putchar(char c);
 int _strlen(char *s);
