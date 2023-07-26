@@ -7,18 +7,18 @@
  */
 char *_strcat(char *dest, char *src)
 {
-        int i = 0, j = 0;
+	int i = 0, j = 0;
 
-        while (dest[i] != '\0')
-                i++;
-        while (src[j] != '\0')
-        {
-                dest[i] = src[j];
-                i++;
-                j++;
-        }
-        dest[i] = '\0';
-        return (dest);
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /**
  * _strcmp - compares two strings
@@ -28,15 +28,15 @@ char *_strcat(char *dest, char *src)
  */
 int _strcmp(char *s1, char *s2)
 {
-        int i = 0;
+	int i = 0;
 
-        for (; i < *s1 && i < *s2; i++)
-        {
-                if (*s1 != *s2)
-                        return (*s1 - *s2);
-                s1++, s2++;
-        }
-        return (*s1 - *s2);
+	for (; i < *s1 && i < *s2; i++)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++, s2++;
+	}
+	return (*s1 - *s2);
 }
 /**
  * _strdup - duplicates a string
@@ -45,26 +45,26 @@ int _strcmp(char *s1, char *s2)
  */
 char *_strdup(char *str)
 {
-        unsigned int i = 0;
-        unsigned int len = 0;
-        char *duplicater;
+	unsigned int i = 0;
+	unsigned int len = 0;
+	char *duplicater;
 
-        if (str == NULL)
-                return (NULL);
+	if (str == NULL)
+		return (NULL);
 
-        for (; str[len] != '\0'; len++)
-        {
-        }
-        duplicater = (char *)malloc((len + 1) * sizeof(char));
+	for (; str[len] != '\0'; len++)
+	{
+	}
+	duplicater = (char *)malloc((len + 1) * sizeof(char));
 
-        if (duplicater == NULL)
-                return (NULL);
+	if (duplicater == NULL)
+		return (NULL);
 
-        for (i = 0; i <= len; i++)
-        {
-                duplicater[i] = str[i];
-        }
-        return (duplicater);
+	for (i = 0; i <= len; i++)
+	{
+		duplicater[i] = str[i];
+	}
+	return (duplicater);
 }
 /**
  * _putchar - writes the character c to stdout
@@ -75,7 +75,7 @@ char *_strdup(char *str)
  */
 int _putchar(char c)
 {
-        return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 /**
  * _strlen - returns the length of a string
@@ -84,42 +84,10 @@ int _putchar(char c)
  */
 int _strlen(char *s)
 {
-        char *p = s;
+	char *p = s;
 
-        while (*p)
-                p++;
-        return (p - s);
+	while (*p)
+		p++;
+	return (p - s);
 }
-/**
- * _puts - ...
- * @str: ...
- * Return: ...
- */
-char _puts(char *str)
-{
-        int i;
 
-        for (i = 0; str[i] != '\0'; i++)
-        {
-                _putchar(str[i]);
-        }
-        return (str[i]);
-}
-/**
- * _strcpy - from dest to source
- * @dest: destination
- * @src: source
- * Return: dest
- */
-char *_strcpy(char *dest, char *src)
-{
-        int i = 0;
-
-        for (; src[i] != '\0'; i++)
-        {
-                dest[i] = src[i];
-        }
-        dest[i] = '\0';
-
-        return (dest);
-}
