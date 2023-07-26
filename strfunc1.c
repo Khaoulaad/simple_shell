@@ -1,6 +1,6 @@
-#include "khaoulashell.c"
+#include "khaoulashell.h"
 /**
- * _strchr - Entry point
+ * _strchr - str char
  * @s: input
  * @c: input
  * Return: Always 0 (Success)
