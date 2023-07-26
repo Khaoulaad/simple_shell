@@ -17,7 +17,7 @@ char *get_path(char *command)
 		else
 			return (NULL);
 	}
-	path = getenv("PATH");
+	path = _getenv("PATH");
 	if (path)
 	{
 		hold_path_cpy = _strdup(path);
