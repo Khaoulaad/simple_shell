@@ -56,7 +56,7 @@ void free_and_exit(char *cmd)
 int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		__attribute__((unused)) char **envp)
 {
-	char *lineptr = NULL, *prompt = "#shell$  ", *token;
+	char *lineptr = NULL, *prompt = "#shell$ ", *token;
 	char **token_copy;
 	ssize_t len = 0;
 	size_t size = 0;
