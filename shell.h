@@ -37,7 +37,8 @@ void environment_fnc(char **args __attribute((unused)));
 void exit_fnc(char **args);
 char *get_path(char *command);
 int handle_space_tab(char *cmd);
-void cleanup_and_exit(char *cmd);
+void free_and_exit(char *cmd);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 
 

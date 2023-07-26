@@ -68,9 +68,9 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			flag = false;
 		else
 			_puts(prompt);
-		if (getline(&lineptr, &size, stdin) == -1)
+		if (_getline(&lineptr, &size, stdin) == -1)
 			free_and_exit(lineptr);
-		len = strlen(lineptr);
+		len = _strlen(lineptr);
 		if (len > 0 && lineptr[len - 1] == '\n')
 			lineptr[len - 1] = '\0';
 		if (len == 1 || lineptr[0] == '\n' || handle_space_tab(lineptr) == 1)
