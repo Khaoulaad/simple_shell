@@ -6,12 +6,12 @@
  */
 void free_cmd_argv(char **cmd_argv)
 {
-        int i;
+	int i;
 
-        if (cmd_argv == NULL)
-                return;
+	if (cmd_argv == NULL)
+		return;
 
-        for (i = 0; cmd_argv[i] != NULL; i++)
-                free(cmd_argv[i]);
-        free(cmd_argv);
+	for (i = 0; cmd_argv[i] != NULL; i++)
+		free(cmd_argv[i]);
+	free(cmd_argv);
 }

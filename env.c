@@ -5,16 +5,16 @@
  */
 void print_environment(void)
 {
-        char **env, *str;
+	char **env, *str;
 
-        for (env = environ; *env != NULL; env++)
-        {
-                str = *env;
-                while (*str != '\0')
-                {
-                        putchar(*str);
-                        str++;
-                }
-                putchar('\n');
-        }
+	for (env = environ; *env != NULL; env++)
+	{
+		str = *env;
+		while (*str != '\0')
+		{
+			putchar(*str);
+			str++;
+		}
+		putchar('\n');
+	}
 }
