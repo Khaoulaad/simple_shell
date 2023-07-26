@@ -75,6 +75,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			lineptr[len - 1] = '\0';
 		if (len == 1 || lineptr[0] == '\n' || handle_space_tab(lineptr) == 1)
 			continue;
+		shell_comments(lineptr);
 		if (lineptr[0] == '\0')
 			continue;
 		token = strtok(lineptr, ";\n");
