@@ -100,36 +100,22 @@ char *_strcat(char *dest, char *src)
  */
 char *_strdup(char *str)
 {
-char *dup;
-unsigned int i, len;
-i = 0;
-len = 0;
-if (str == NULL)
-return (NULL);
-while (str[len])
-len++;
-dup = malloc(sizeof(char) * (len + 1));
-if (dup == NULL)
-return (NULL);
-while ((dup[i] = str[i]) != '\0')
-i++;
-return (dup);
+	char *dup;
+	unsigned int i, len;
+
+	i = 0;
+	len = 0;
+	if (str == NULL)
+		return (NULL);
+	while (str[len])
+		len++;
+	dup = malloc(sizeof(char) * (len + 1));
+	if (dup == NULL)
+		return (NULL);
+	while ((dup[i] = str[i]) != '\0')
+		i++;
+	return (dup);
 }
 
 
-/**
- * _strchr - Entry point
- * @s: input
- * @c: input
- * Return: Always 0 (Success)
- */
-char *_strchr(char *s, char c)
-{
-int i = 0;
-for (; s[i] >= '\0'; i++)
-{
-if (s[i] == c)
-return (&s[i]);
-}
-return (0);
-}
+
