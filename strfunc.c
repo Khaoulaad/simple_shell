@@ -91,4 +91,3 @@ int _strlen(char *s)
 		p++;
 	return (p - s);
 }
-
