@@ -22,6 +22,13 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	bytes_read = read(fileno(stream), input_buffer, MAX_INPUT_LENGTH);
 	if (bytes_read == -1)
 		return (-1);
+	if (bytes_read == 0)
+	{
+		free(*lineptr);
+		*lineptr = NULL;
+		*n = 0;
+		return (-1);
+	}
 
 	while (length < MAX_INPUT_LENGTH && input_buffer[length]
 			!= '\n' && input_buffer[length] != '\0')
