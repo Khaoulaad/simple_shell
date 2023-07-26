@@ -39,6 +39,7 @@ char *get_path(char *command);
 int handle_space_tab(char *cmd);
 void free_and_exit(char *cmd);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+void shell_comments(char *cmd);
 
 
 
