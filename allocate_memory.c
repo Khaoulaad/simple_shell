@@ -25,11 +25,11 @@ char **_allocate_strtoke(char *value)
 
 	input_cpy = strdup(value);
 	helper_allocate_strtoke(input_cpy);
-	token = strtok(value, delim);
+	token = _strtok(value, delim);
 	while (token)
 	{
 		num_tokens++;
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 	}
 	num_tokens++;
 	tokens = malloc(sizeof(char *) * num_tokens);
@@ -39,7 +39,7 @@ char **_allocate_strtoke(char *value)
 		free(input_cpy);
 		return (NULL);
 	}
-	token = strtok(input_cpy, delim);
+	token = _strtok(input_cpy, delim);
 	while (token)
 	{
 		tokens[i] = strdup(token);
@@ -52,7 +52,7 @@ char **_allocate_strtoke(char *value)
 			free(input_cpy);
 			return (NULL);
 		}
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		i++;
 	}
 	tokens[i] = NULL;

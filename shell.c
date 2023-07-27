@@ -78,18 +78,18 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		shell_comments(lineptr);
 		if (lineptr[0] == '\0')
 			continue;
-		token = strtok(lineptr, ";\n");
+		token = _strtok(lineptr, ";\n");
 		while (token)
 		{
 			token_copy = _allocate_strtoke(token);
 			if (token_copy[0] == NULL || token_copy[0][0] == '\0')
 			{
-				token = strtok(NULL, ";\n");
+				token = _strtok(NULL, ";\n");
 				continue;
 			}
 			_execute(token_copy);
 			free_tokens(token_copy);
-			token = strtok(NULL, ";\n");
+			token = _strtok(NULL, ";\n");
 		}
 	}
 	free(lineptr);
