@@ -68,7 +68,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 			flag = false;
 		else
 			_puts(prompt);
-		if (_getline(&lineptr, &size, stdin) == -1)
+		if (getline(&lineptr, &size, stdin) == -1)
 			free_and_exit(lineptr);
 		len = _strlen(lineptr);
 		if (len > 0 && lineptr[len - 1] == '\n')
