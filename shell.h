@@ -44,11 +44,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void shell_comments(char *cmd);
 char *build_file_path(char *path_token, char *command);
 char *_getenv(char *PATH);
+char *_strtok(char *str, const char *delimiter);
 
-int _write(int fd, char *inp, int len);
-void print_error(char *prog, int *cmdr, char *msg);
-
-int find_n_rep(char **str, char *torep, char *repwith);
-int find_tok_occ(char *str, char *tof);
 
 #endif
