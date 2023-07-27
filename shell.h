@@ -46,5 +46,10 @@ char *build_file_path(char *path_token, char *command);
 char *_getenv(char *PATH);
 char *_strtok(char *str, const char *delimiter);
 
+int _unsetenv(char *name);
+int is_environment(char *name);
+int concat_env(char *env_name, char *env_value);
+void print_env(void);
+int _setenv(const char *name, const char *value, int overwrite);
 
 #endif
