@@ -43,6 +43,11 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void shell_comments(char *cmd);
 char *build_file_path(char *path_token, char *command);
 char *_getenv(char *PATH);
+int is_environment(char *name);
+int concat_env(char *env_name, char *env_value);
+void print_env(void);
+int _setenv(const char *name, const char *value, int overwrite);
+int _unsetenv(char *name);
 
 
 #endif
