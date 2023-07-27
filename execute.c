@@ -29,7 +29,7 @@ int _execute(char *argv[])
 	int status;
 	int built_in_flag = handl_builtin(argv[0], argv);
 
-	path_cmd = get_path(argv[0]);
+	path_cmd = handle_path(argv[0]);
 
 	if (path_cmd == NULL && !built_in_flag)
 	{

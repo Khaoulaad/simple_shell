@@ -35,7 +35,55 @@ void free_tokens(char **tokens)
 	}
 	free(tokens);
 }
+
 /**
+ * Function to handle the 'cd' command
+ */
+void cd_command(char **args)
+{
+ char cwd[PATH_MAX];
+
+    if (args[1] == NULL)
+    {
+        
+        if (chdir(getenv("HOME")) != 0)
+        {
+            perror("cd");
+        }
+    }
+    else if (strcmp(args[1], "-") == 0)
+    {
+               char *prev_cwd = getenv("OLDPWD");
+        if (prev_cwd != NULL)
+        {
+            if (chdir(prev_cwd) != 0)
+            {
+                perror("cd");
+            }
+        }
+        else
+        {
+            fprintf(stderr, "cd: OLDPWD not set\n");
+        }
+    }
+    else
+    {
+               if (chdir(args[1]) != 0)
+        {
+            perror("cd");
+        }
+    }
+
+          if (getcwd(cwd, sizeof(cwd)) != NULL)
+    {
+        setenv("OLDPWD", getenv("PWD"), 1);
+        setenv("PWD", cwd, 1);
+    }
+}
+
+ 
+
+   /**
  * free_and_exit - frees allocated memory and exits the program
  * @cmd: command string to free
  */
@@ -78,20 +126,30 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		shell_comments(lineptr);
 		if (lineptr[0] == '\0')
 			continue;
-		token = _strtok(lineptr, ";\n");
+		token = strtok(lineptr, ";\n");
 		while (token)
 		{
 			token_copy = _allocate_strtoke(token);
 			if (token_copy[0] == NULL || token_copy[0][0] == '\0')
 			{
-				token = _strtok(NULL, ";\n");
-				continue;
+				token = strtok(NULL, ";\n");
+				continue; 
 			}
-			_execute(token_copy);
-			free_tokens(token_copy);
-			token = _strtok(NULL, ";\n");
+				if (strcmp(token_copy[0], "cd") == 0)
+                        {
+                             cd_command(token_copy);
+                        }
+                        else
+                        {
+                                                      _execute(token_copy);
+                        }
+			
+		free_tokens(token_copy);
+			token = strtok(NULL, ";\n");
 		}
 	}
 	free(lineptr);
 	return (0);
 }
+
+

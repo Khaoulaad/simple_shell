@@ -17,7 +17,7 @@
 #include <ctype.h>
 #include <stddef.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 
 extern char **environ;
 extern char **__environ;
@@ -44,7 +44,8 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void shell_comments(char *cmd);
 char *build_file_path(char *path_token, char *command);
 char *_getenv(char *PATH);
-char *_strtok(char *str, const char *delimiter);
+char *handle_path(char *command);
+
 
 int _unsetenv(char *name);
 int is_environment(char *name);
@@ -53,5 +54,7 @@ void print_env(void);
 int _setenv(const char *name, const char *value, int overwrite);
 int _change_directory(char *path);
 int _chdir(char *path);
+char *_strtok(char *str, const char *d);
+bool is_delim(char c, const char* delim);
 
 #endif
