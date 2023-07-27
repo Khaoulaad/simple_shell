@@ -64,16 +64,4 @@ int handl_builtin(char *cmd, char **args)
 		return (1);
 	}
 	return (0);
-	if (_strcmp(cmd, "setenv") == 0)
-	{
-		setenv_fnc(args);
-		return (1);
-	}
-
-	if (_strcmp(cmd, "unsetenv") == 0)
-	{
-		_unsetenv(args[1]);
-		return (1);
-	}
-	return (0);
 }
