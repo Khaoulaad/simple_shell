@@ -39,7 +39,7 @@ void free_tokens(char **tokens)
 /**
  * Function to handle the 'cd' command
  */
-void cd_command(char **args)
+ void cd_command(char **args)
 {
  char cwd[PATH_MAX];
 
@@ -53,7 +53,7 @@ void cd_command(char **args)
     }
     else if (strcmp(args[1], "-") == 0)
     {
-               char *prev_cwd = getenv("OLDPWD");
+              const char *prev_cwd = getenv("OLDPWD");
         if (prev_cwd != NULL)
         {
             if (chdir(prev_cwd) != 0)
@@ -81,7 +81,7 @@ void cd_command(char **args)
     }
 }
 
- 
+
 
    /**
  * free_and_exit - frees allocated memory and exits the program
@@ -141,7 +141,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
                         }
                         else
                         {
-                                                      _execute(token_copy);
+                                                      execute_cmd(token_copy);
                         }
 			
 		free_tokens(token_copy);

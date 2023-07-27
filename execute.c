@@ -1,59 +1,40 @@
 #include "shell.h"
 
 /**
- * execute_command - executes a command with the given path
- * @path_cmd: path of the command
- * @argv: array of arguments
- * Return: void
+ * execute_cmd - execute a command
+ * @argv: the command and its arguments
  */
-void execute_command(char *path_cmd, char *argv[])
+void execute_cmd(char **argv)
 {
-	if (execve(path_cmd, argv, environ) == -1)
-	{
-		perror("Command not found");
-		if (path_cmd)
-			free(path_cmd);
-		exit(EXIT_FAILURE);
-	}
-}
+        char *command = NULL;
+        char *actual_command = NULL;
+        char *error_msg = NULL;
+        pid_t pid;
+        int status;
 
-/**
- * _execute - executes the command
- * @argv: array of arguments
- * Return: void
- */
-int _execute(char *argv[])
-{
-	char *path_cmd = NULL;
-	pid_t born;
-	int status;
-	int built_in_flag = handl_builtin(argv[0], argv);
-
-	path_cmd = handle_path(argv[0]);
-
-	if (path_cmd == NULL && !built_in_flag)
-	{
-		perror(argv[0]);
-		return (100);
-	}
-	if (built_in_flag)
-	{
-		if (path_cmd)
-			free(path_cmd);
-		return (1);
-	}
-	born = fork();
-	if (born == -1)
-	{
-		perror("Error (fork)");
-		if (path_cmd)
-			free(path_cmd);
-		exit(EXIT_FAILURE);
-	}
-	else if (born == 0)
-		execute_command(path_cmd, argv);
-	wait(&status);
-	if (path_cmd)
-		free(path_cmd);
-	return (status);
+        pid = fork();
+        if (pid == 0)
+        {
+                if (argv)
+                {
+                        command = argv[0];
+                        actual_command = handle_path(command);
+                        if (actual_command != NULL)
+                        {
+                                if (execve(actual_command, argv, NULL) == -1)
+                                        perror("execve");
+                                free(actual_command);
+                        }
+                        else
+                        {
+                                write(1, command, strlen(command));
+                                error_msg = ": command not found";
+                                write(1, error_msg, strlen(error_msg));
+                                putchar('\n');
+                        }
+                }
+                exit(0);
+        }
+        else
+                wait(&status);
 }

@@ -32,7 +32,7 @@ int _strcmp(char *s1, char *s2);
 char *_strdup(char *str);
 /*prototypes*/
 char *_getenv(char *PATH);
-int _execute(char *argv[]);
+void execute_cmd(char **argv);
 char **_allocate_strtoke(char *value);
 int handl_builtin(char *cmd, char **args);
 void environment_fnc(char **args __attribute((unused)));
