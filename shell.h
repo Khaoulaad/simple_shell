@@ -51,5 +51,7 @@ int is_environment(char *name);
 int concat_env(char *env_name, char *env_value);
 void print_env(void);
 int _setenv(const char *name, const char *value, int overwrite);
+int _change_directory(char *path);
+int _chdir(char *path);
 
 #endif
