@@ -29,6 +29,13 @@ int _execute(char *argv[])
 	int status;
 	int built_in_flag = handl_builtin(argv[0], argv);
 
+	if (_strcmp(argv[0], "cd") == 0)
+	{
+		if (_chdir(argv[1]) != 1)
+			return (1);
+		return (0);
+	}
+
 	path_cmd = get_path(argv[0]);
 
 	if (path_cmd == NULL && !built_in_flag)
