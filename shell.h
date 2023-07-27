@@ -43,8 +43,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void shell_comments(char *cmd);
 char *build_file_path(char *path_token, char *command);
 char *_getenv(char *PATH);
-int _change_directory(char *path);
-int _chdir(char *path);
 
 
 #endif
