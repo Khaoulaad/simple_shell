@@ -56,5 +56,6 @@ int _change_directory(char *path);
 int _chdir(char *path);
 char *_strtok(char *str, const char *d);
 bool is_delim(char c, const char* delim);
+void cd_command(char **args);
 
 #endif

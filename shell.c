@@ -39,49 +39,55 @@ void free_tokens(char **tokens)
 /**
  * Function to handle the 'cd' command
  */
- void cd_command(char **args)
-{
- char cwd[PATH_MAX];
 
-    if (args[1] == NULL)
+void cd_command(char **args)
+{
+    char *home_dir = getenv("HOME");
+    char *current_dir = NULL;
+    char *prev_dir = getenv("OLDPWD");
+    int ret;
+
+    if (args[1] == NULL || (strcmp(args[1], "-") == 0))
     {
-        
-        if (chdir(getenv("HOME")) != 0)
+        if (args[1] != NULL && strcmp(args[1], "-") == 0)
         {
-            perror("cd");
-        }
-    }
-    else if (strcmp(args[1], "-") == 0)
-    {
-              const char *prev_cwd = getenv("OLDPWD");
-        if (prev_cwd != NULL)
-        {
-            if (chdir(prev_cwd) != 0)
+            if (prev_dir == NULL)
             {
                 perror("cd");
+                return;
             }
+            printf("%s\n", prev_dir);
+            ret = chdir(prev_dir);
         }
         else
         {
-            fprintf(stderr, "cd: OLDPWD not set\n");
+            if (home_dir == NULL)
+            {
+                perror("cd");
+                return;
+            }
+            printf("%s\n", home_dir);
+            ret = chdir(home_dir);
         }
     }
     else
     {
-               if (chdir(args[1]) != 0)
+        printf("%s\n", args[1]);
+        ret = chdir(args[1]);
+    }
+
+    if (ret == -1)
+        perror("cd");
+    else
+    {
+               current_dir = getcwd(NULL, 0);
+        if (current_dir)
         {
-            perror("cd");
+            setenv("PWD", current_dir, 1);
+            free(current_dir);
         }
     }
-
-          if (getcwd(cwd, sizeof(cwd)) != NULL)
-    {
-        setenv("OLDPWD", getenv("PWD"), 1);
-        setenv("PWD", cwd, 1);
-    }
 }
-
-
 
    /**
  * free_and_exit - frees allocated memory and exits the program
@@ -110,6 +116,7 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 	size_t size = 0;
 	bool flag = true;
 
+
 	while (1 && flag)
 	{
 		if (isatty(STDIN_FILENO) == 0)
@@ -130,26 +137,25 @@ int main(__attribute__((unused)) int argc, char **argv __attribute__((unused)),
 		while (token)
 		{
 			token_copy = _allocate_strtoke(token);
-			if (token_copy[0] == NULL || token_copy[0][0] == '\0')
-			{
-				token = strtok(NULL, ";\n");
-				continue; 
-			}
-				if (strcmp(token_copy[0], "cd") == 0)
-                        {
-                             cd_command(token_copy);
-                        }
-                        else
-                        {
-                                                      execute_cmd(token_copy);
-                        }
-			
-		free_tokens(token_copy);
-			token = strtok(NULL, ";\n");
+            if (token_copy[0] == NULL || token_copy[0][0] == '\0')
+            {
+                token = strtok(NULL, ";\n");
+                continue;
+            }
+            if (strcmp(token_copy[0], "cd") == 0)
+            {
+                cd_command(token_copy);
+            }
+            else
+            {
+                execute_cmd(token_copy); 
+            }
+
+            free_tokens(token_copy);
+            token = strtok(NULL, ";\n");	
 		}
 	}
+		
 	free(lineptr);
 	return (0);
 }
-
-
