@@ -1,3 +1,6 @@
+#include "shell.h"
+
+
 /**
  * f_strjoin - concatenates string 1 + string 2
  * @s1: string 1

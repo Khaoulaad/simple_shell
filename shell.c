@@ -24,11 +24,9 @@ int main(int ac, char **av)
 
 	signal(SIGINT, sigintHandler);
 	fd = handle_arguments(ac, av, &exec_file);
-	/*update_count_lines();*/
 
 	while (1)
 	{
-		/* Print console symbol only if it is interactive*/
 		if (isatty(STDIN_FILENO) == 1 && exec_file == 0)
 			write(STDOUT_FILENO, "$ ", 2);
 		/* Read commands from console */
