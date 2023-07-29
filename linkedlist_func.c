@@ -35,6 +35,32 @@ int add_node(cmdnode **head, char *cmd, char *op)
 }
 
 /**
+ * print_nodes - print contents of a linked list
+ * @head: first node
+ * Return: 0 on sucess -1 on faliure
+ */
+
+int print_nodes(cmdnode *head)
+{
+	if (!head)
+		return (-1);
+
+	while (head)
+	{
+		_write(-1, NULL, 0);
+		_write(1, "cmd ", 4);
+		_write(1, head->cmd, _strlen(head->cmd));
+		_write(1, ", op '", 6);
+		_write(1, head->op, _strlen(head->op));
+		_write(1, "'\n", 2);
+		_write(1, NULL, 0);
+		head = head->next;
+	}
+	return (0);
+}
+
+
+/**
  * build_list - build command list
  * @cmds: command to be added
  * Return: pointer to first node
@@ -84,30 +110,6 @@ cmdnode *build_list(char *cmds)
 	return (head);
 }
 
-/**
- * print_nodes - print contents of a linked list
- * @head: first node
- * Return: 0 on sucess -1 on faliure
- */
-
-int print_nodes(cmdnode *head)
-{
-	if (!head)
-		return (-1);
-
-	while (head)
-	{
-		_write(-1, NULL, 0);
-		_write(1, "cmd ", 4);
-		_write(1, head->cmd, _strlen(head->cmd));
-		_write(1, ", op '", 6);
-		_write(1, head->op, _strlen(head->op));
-		_write(1, "'\n", 2);
-		_write(1, NULL, 0);
-		head = head->next;
-	}
-	return (0);
-}
 
 /**
  * free_list - frees a cmdnode list
