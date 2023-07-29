@@ -27,7 +27,7 @@ int handle_exit(char **cmd)
 			_strcpy(msg, "numeric argument required ");
 			smn = _malloc(_strlen("exit: ") + _strlen(cmd[1]) + 4);
 			_strcpy(smn, "exit: "), _strcat(smn, cmd[1]);
-			print_error(smn, NULL, msg);
+			printerror(smn, NULL, msg);
 			free(msg), free(smn);
 			exitstatus = 2;
 		}
@@ -38,7 +38,7 @@ int handle_exit(char **cmd)
 			_strcpy(msg, "numeric argument required ");
 			smn = _malloc(_strlen("exit: ") + _strlen(cmd[1]) + 4);
 			_strcpy(smn, "exit: "), _strcat(smn, cmd[1]);
-			print_error(smn, NULL, msg);
+			printerror(smn, NULL, msg);
 			free(msg), free(smn);
 			exitstatus = 2;
 		}
@@ -73,7 +73,7 @@ int *handlebin(char **cmd, alias **head)
 	else if (!_strcmp(cmd[0], "setenv"))
 	{
 		if (_arlen(cmd) != 3)
-			errno = -2, print_error(cmd[0], NULL, "Syntax error");
+			errno = -2, printerror(cmd[0], NULL, "Syntax error");
 		else
 			_setenv(cmd[1], cmd[2], 0);
 		ret[0] = 0;
@@ -81,7 +81,7 @@ int *handlebin(char **cmd, alias **head)
 	else if (!_strcmp(cmd[0], "unsetenv"))
 	{
 		if (_arlen(cmd) != 2)
-			errno = -2, print_error(cmd[0], NULL, "Syntax error");
+			errno = -2, printerror(cmd[0], NULL, "Syntax error");
 		else
 			_unsetenv(cmd[1]);
 		ret[0] = 0;

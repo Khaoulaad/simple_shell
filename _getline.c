@@ -2,7 +2,7 @@
 
 /**
  * _getline - get line of string from file
- * @lnptr: variable to store string
+ * @lineptr: variable to store string
  * @size: number of strings stored
  * @fd: file to read from
  *

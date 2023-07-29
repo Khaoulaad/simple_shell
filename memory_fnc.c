@@ -69,7 +69,7 @@ void *_malloc(unsigned int size)
 
 	if (!pointer)
 	{
-		print_error(NULL, NULL, "ERROR ALLOCATING MEMORY");
+		printerror(NULL, NULL, "ERROR ALLOCATING MEMORY");
 		exit(-1);
 	}
 	while (i < size)

@@ -86,7 +86,7 @@ int print_alias(alias *head, char *key)
 		_strcpy(msg, "not found ");
 		smn = _malloc(_strlen("alias: ") + _strlen(key) + 4);
 		_strcpy(smn, "alias: "), _strcat(smn, key);
-		print_error(smn, NULL, msg);
+		printerror(smn, NULL, msg);
 		free(msg), free(smn);
 		return (-1);
 	}
@@ -110,7 +110,7 @@ int print_alias(alias *head, char *key)
 	_strcpy(msg, "not found ");
 	smn = _malloc(_strlen("alias: ") + _strlen(key) + 4);
 	_strcpy(smn, "alias: "), _strcat(smn, key);
-	print_error(smn, NULL, msg);
+	printerror(smn, NULL, msg);
 	free(msg), free(smn);
 	return (-1);
 }

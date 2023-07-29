@@ -27,7 +27,7 @@ int _write(int filedescriptor, char *inp, int len)
 		{
 			if (write(filedescriptor, writeq, BUFFER_t) == -1)
 			{
-				print_error(NULL, NULL, "problem writing");
+				printerror(NULL, NULL, "problem writing");
 				exit(-1);
 			}
 			nq = 0;
@@ -45,7 +45,7 @@ int _write(int filedescriptor, char *inp, int len)
 	if (!inp)
 		if (write(filedescriptor, writeq, nq) == -1)
 		{
-			print_error(NULL, NULL, "problem writing");
+			printerror(NULL, NULL, "problem writing");
 			exit(-1);
 		}
 	return (0);

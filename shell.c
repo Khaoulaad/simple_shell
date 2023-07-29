@@ -21,7 +21,7 @@ int main(int argc, char **argv, char **argp)
 	int mode = !isatty(0), i = 0, cmdnum = 1, inputs = 0, ret;
 	alias *head = NULL;
 
-	print_error(argv[0], &inputs, NULL);
+	printerror(argv[0], &inputs, NULL);
 	environ = _arrdup(argp);
 	if (argc > 1)
 	{
@@ -159,7 +159,7 @@ int exec_cmd(char **cmd_l, int index, alias **aliashead)
 			childid = fork();
 			if (childid < 0)
 			{
-				print_error(NULL, NULL, "Coudn't create a child proccess");
+				printerror(NULL, NULL, "Coudn't create a child proccess");
 				exit(127);
 			}
 			if (childid == 0)

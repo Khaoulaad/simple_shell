@@ -118,7 +118,7 @@ int write_history(char *);
 
 int _write(int, char *, int);
 
-void print_error(char *, int *, char *);
+void printerror(char *, int *, char *);
 
 extern char **environ;
 
