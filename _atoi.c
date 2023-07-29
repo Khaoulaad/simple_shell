@@ -36,13 +36,13 @@ char *itoa(int n)
 {
 	int length, j, k, digit1, tmp2, i = 0;
 	unsigned int num;
-	char *nums = _malloc(num_len((n > 0) ? n : -1 * n) + 2);
+	char *nums = _malloc(num_length((n > 0) ? n : -1 * n) + 2);
 
 	if (!nums)
 		return (NULL);
 	if (n < 0)
 		n *= -1, *(nums + i) = '-', i++;
-	num = n, length = num_len(num), j = length - 1;
+	num = n, length = num_length(num), j = length - 1;
 	if (num == 0)
 		nums[i] = 48, i++;
 	else
@@ -63,7 +63,7 @@ char *itoa(int n)
 
 				tmp2 = num;
 				num -= pow_b(10, j) * digit1;
-				if (num_len(tmp2) - num_len(num) == 2)
+				if (num_length(tmp2) - num_length(num) == 2)
 					nums[i] = 48, i++, j--;
 				j--;
 			}

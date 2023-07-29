@@ -107,7 +107,7 @@ void free_list(cmdnode *);
 cmdnode *add_node_index(cmdnode **, char *, char *, int);
 
 int pow_b(unsigned int base, int power);
-int num_len(unsigned int num);
+int num_length(unsigned int num);
 char *itoa(int);
 int _atoi(char *);
 
