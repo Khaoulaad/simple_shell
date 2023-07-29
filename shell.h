@@ -49,7 +49,7 @@ void mv_cmd(cmdnode **, int);
 int exec_cmd(char **, int, alias **);
 
 
-char *get_file_path(char *);
+char *_file_path(char *);
 void parse_args(char *, const char *, char ***, int);
 int get_input(char **, size_t *, char ***, int);
 void trim_spaces(char **, char *);
@@ -85,7 +85,7 @@ char *_getenv(const char *);
 void _printenv(void);
 
 int _chdir(char *);
-int runscript(char *);
+int runcommand(char *);
 int execute(char **);
 
 int xpnd_str(char **, int);

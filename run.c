@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * runscript - run a file if executable
+ * runcommand - run a file if executable
  * @name: filename
  * Return: 0 on sucess and -1 on faliure
  */
 
-int runscript(char *name)
+int runcommand(char *name)
 {
 	char *path = NULL, *currentdir = NULL;
 	int fd, i, cmdlen;

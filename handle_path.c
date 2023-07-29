@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * get_file_path - get PATH
+ * _file_path - get PATH
  * @name: name of command
  * Return: a full path of name or name it self on failure
  */
 
-char *get_file_path(char *name)
+char *_file_path(char *name)
 {
 	char *PATH = _getenv("PATH"), *fpath = NULL;
 	char *tokenized = _strtok(PATH, ":", 0);

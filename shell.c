@@ -25,7 +25,7 @@ int main(int argc, char **argv, char **argp)
 	environ = _arrdup(argp);
 	if (argc > 1)
 	{
-		ret = runscript(argv[1]);
+		ret = runcommand(argv[1]);
 		free_pp(environ);
 		exit(ret);
 	}
@@ -52,13 +52,13 @@ int main(int argc, char **argv, char **argp)
 
 /**
  * handlerc - handlce SIGNUM
- * @signum: sig ID
+ * @sign: sig ID
  */
 
-static void handlerc(int signum)
+static void handlerc(int sign)
 {
 	write(1, "\n$ ", 3);
-	(void)signum;
+	(void)sign;
 }
 
 /**

@@ -14,7 +14,7 @@ int execute(char **tmp)
 
 	if (!tmp)
 		return (exitstat);
-	fpath = get_file_path(tmp[0]);
+	fpath = _file_path(tmp[0]);
 	if (stat(fpath, &cmdinfo) == 0 && cmdinfo.st_mode & S_IXUSR)
 		exitstat = execve(fpath, tmp, environ);
 	else

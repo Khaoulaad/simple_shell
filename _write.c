@@ -2,48 +2,48 @@
 
 /**
  * _write - write to field descriptor
- * @fd: field descriptor
+ * @filedescriptor: field descriptor
  * @inp: string to write
  * @len: number of chars in string
  *
  * Return: -100 when no queue, 100 when sucessfully write to
  */
 
-int _write(int fd, char *inp, int len)
+int _write(int filedescriptor, char *inp, int len)
 {
 
-	static char writeque[BUFFER_t];
-	static int nque;
+	static char writeq[BUFFER_t];
+	static int nq;
 	int i;
 
-	if (fd < 0)
+	if (filedescriptor < 0)
 	{
-		nque = 0;
+		nq = 0;
 		return (-100);
 	}
 	if (inp)
 	{
-		if ((len + nque) >= BUFFER_t)
+		if ((len + nq) >= BUFFER_t)
 		{
-			if (write(fd, writeque, BUFFER_t) == -1)
+			if (write(filedescriptor, writeq, BUFFER_t) == -1)
 			{
 				print_error(NULL, NULL, "problem writing");
 				exit(-1);
 			}
-			nque = 0;
+			nq = 0;
 		}
 		i = 0;
 		while (i < len)
 		{
-			writeque[nque + i] = inp[i];
+			writeq[nq + i] = inp[i];
 			i++;
 		}
-		writeque[nque + i] = '\0';
-		nque += len;
+		writeq[nq + i] = '\0';
+		nq += len;
 		return (100);
 	}
 	if (!inp)
-		if (write(fd, writeque, nque) == -1)
+		if (write(filedescriptor, writeq, nq) == -1)
 		{
 			print_error(NULL, NULL, "problem writing");
 			exit(-1);
