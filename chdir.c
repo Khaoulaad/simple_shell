@@ -26,7 +26,7 @@ int _chdir(char *path)
 		_strcpy(msg, "No such file or directory ");
 		smn = _malloc(_strlen("cd: ") + _strlen(path) + 4);
 		_strcpy(smn, "cd: "), _strcat(smn, path);
-		print_error(smn, NULL, msg);
+		printerror(smn, NULL, msg);
 		free(msg), free(smn);
 		exitstat = 1;
 	}

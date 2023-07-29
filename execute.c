@@ -21,7 +21,7 @@ int execute(char **tmp)
 	{
 		exitstat = 127;
 		errno = -4;
-		print_error(tmp[0], NULL, "not found");
+		printerror(tmp[0], NULL, "not found");
 	}
 	free(fpath);
 	return (exitstat);

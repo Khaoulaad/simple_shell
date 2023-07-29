@@ -29,7 +29,7 @@ int runcommand(char *name)
 		errno = -3;
 		errmsg = _malloc(_strlen("No such file or directory ") + _strlen(name) + 4);
 		_strcpy(errmsg, "No such file or directory ");
-		print_error(name, NULL, errmsg);
+		printerror(name, NULL, errmsg);
 		free(errmsg), free(path);
 		return (127);
 	}
