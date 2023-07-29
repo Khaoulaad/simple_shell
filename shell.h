@@ -51,7 +51,7 @@ int exec_cmd(char **, int, alias **);
 
 char *_file_path(char *);
 void parse_args(char *, const char *, char ***, int);
-int get_input(char **, size_t *, char ***, int);
+int getinput(char **, size_t *, char ***, int);
 void trim_spaces(char **, char *);
 
 int *handle_bin(char **, alias **);

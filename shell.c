@@ -32,7 +32,7 @@ int main(int argc, char **argv, char **argp)
 	signal(SIGINT, handlerc);
 	while (1)
 	{
-		cmd = NULL, cmds = NULL, get_input(&cmd, &cmdlen, &cmds, 0);
+		cmd = NULL, cmds = NULL, getinput(&cmd, &cmdlen, &cmds, 0);
 		cmdnum = _arlen(cmds), i = 0;
 		free(cmd);
 		inputs++;

@@ -35,7 +35,7 @@ int runcommand(char *name)
 	}
 	free(path);
 
-	get_input(&input, &len, &cmds, fd), find_n_rep(&(cmds[0]), "\n", ";");
+	getinput(&input, &len, &cmds, fd), find_n_rep(&(cmds[0]), "\n", ";");
 	parse_args(cmds[0], ";", &cmds2, 0), free(input), free_pp(cmds);
 
 	i = 0, cmdlen = _arlen(cmds2);
