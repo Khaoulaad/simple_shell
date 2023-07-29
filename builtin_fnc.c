@@ -50,14 +50,14 @@ int handle_exit(char **cmd)
 }
 
 /**
- * handle_bin - handle built-in commands
+ * handlebin - handle built-in commands
  * @cmd: arguments
  * @head: first node
  *
  * Return: 0 if built-in command executed or 1 if not
  */
 
-int *handle_bin(char **cmd, alias **head)
+int *handlebin(char **cmd, alias **head)
 {
 	int *ret = _malloc(2 * sizeof(int));
 
@@ -91,7 +91,7 @@ int *handle_bin(char **cmd, alias **head)
 	else if (!_strcmp(cmd[0], "history"))
 		print_history(), ret[0] = 0;
 	else if (!_strcmp(cmd[0], "help"))
-		print_help(_arlen(cmd) > 1 ? cmd[1] : NULL), ret[0] = 0;
+		printhelp(_arlen(cmd) > 1 ? cmd[1] : NULL), ret[0] = 0;
 	else if (!_strcmp(cmd[0], "alias"))
 		handle_alias(cmd, head), ret[0] = 0;
 

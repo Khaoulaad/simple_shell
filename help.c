@@ -1,12 +1,12 @@
 #include "help.h"
 
 /**
- * print_help - print help command
+ * printhelp - prints help command
  * @arg: arguments
  * Return: none
  */
 
-void print_help(char *arg)
+void printhelp(char *arg)
 {
 	int fd = 1;
 

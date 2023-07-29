@@ -140,7 +140,7 @@ int exec_cmd(char **cmd_l, int index, alias **aliashead)
 		xpnd_str(&(head->cmd), exitstat);
 		xpnd_alias(&(head->cmd), *aliashead);
 		parse_args(head->cmd, " ", &tmp, 0);
-		binstat = handle_bin(tmp, aliashead);
+		binstat = handlebin(tmp, aliashead);
 		if (!binstat[0])
 		{
 			if (binstat[1] != 266)

@@ -1,24 +1,5 @@
 #include "shell.h"
 
-/**
- * free_pp - free pointer to pointer
- * @a: double pointer to be freed
- */
-
-void free_pp(char **a)
-{
-	char **_a = a;
-
-	if (!a)
-		return;
-
-	while (*_a)
-	{
-		free(*_a);
-		_a++;
-	}
-	free(a);
-}
 
 /**
  * _arlen - find length of list
@@ -128,3 +109,24 @@ void *_realloc(void *ptr, unsigned int size)
 	free(ptr);
 	return (pointer);
 }
+
+/**
+ * free_pp - free pointer to pointer
+ * @a: double pointer to be freed
+ */
+
+void free_pp(char **a)
+{
+	char **_a = a;
+
+	if (!a)
+		return;
+
+	while (*_a)
+	{
+		free(*_a);
+		_a++;
+	}
+	free(a);
+}
+

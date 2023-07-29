@@ -54,7 +54,7 @@ void parse_args(char *, const char *, char ***, int);
 int getinput(char **, size_t *, char ***, int);
 void trim_spaces(char **, char *);
 
-int *handle_bin(char **, alias **);
+int *handlebin(char **, alias **);
 
 void free_pp(char **);
 int _arlen(char **);
@@ -111,7 +111,7 @@ int num_len(unsigned int num);
 char *itoa(int);
 int _atoi(char *);
 
-void print_help(char *arg);
+void printhelp(char *arg);
 
 int print_history(void);
 int write_history(char *);
